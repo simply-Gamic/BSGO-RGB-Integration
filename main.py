@@ -42,6 +42,7 @@ green = RGBColor(0, 255, 0)
 blue = RGBColor(0, 0, 255)
 lis = [blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue]
 print(len(lis))
+
 # variable for later iteration through launchpad rows
 r = range(9)
 
@@ -62,10 +63,12 @@ while True:
             CurrentHealth = int(line2)
 
             # calculate health percentage and translate to red & green values
-            Percentage = CurrentHealth / MaxHealth
-            x = MaxHealth - CurrentHealth
-            RChannel = x / 2
-            GChannel = Percentage * 255
+            HealthDifference = MaxHealth - CurrentHealth
+            PercentageMax = HealthDifference / MaxHealth
+            PercentageCurrent = CurrentHealth / MaxHealth
+
+            RChannel = PercentageMax * 255
+            GChannel = PercentageCurrent * 255
 
             # make variable for color
             Color = RGBColor(int(RChannel), int(GChannel), 0)
