@@ -39,7 +39,9 @@ lp.ButtonFlush()
 # define colors used
 red = RGBColor(255, 0, 0)
 green = RGBColor(0, 255, 0)
-
+blue = RGBColor(0, 0, 255)
+lis = [blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue]
+print(len(lis))
 # variable for later iteration through launchpad rows
 r = range(9)
 
@@ -74,7 +76,7 @@ while True:
             time.sleep(0.001)
 
             # set color according to health
-            Key.set_color(Color)
+            Key.set_colors(lis)
             Pad.set_color(Color)
             Mobo.set_color(Color)
             Mouse.set_color(Color)
