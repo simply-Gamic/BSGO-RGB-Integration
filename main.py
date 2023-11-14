@@ -40,8 +40,7 @@ lp.ButtonFlush()
 red = RGBColor(255, 0, 0)
 green = RGBColor(0, 255, 0)
 blue = RGBColor(0, 0, 255)
-lis = [blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue]
-print(len(lis))
+black = RGBColor(0, 0, 0)
 
 # variable for later iteration through launchpad rows
 r = range(9)
@@ -74,6 +73,14 @@ while True:
             Color = RGBColor(int(RChannel), int(GChannel), 0)
             RGSwap = RGBColor(int(GChannel), int(RChannel), 0)  # use if devices uses different pin layout
             clist = [int(RChannel), int(GChannel), 0]
+            lis = [Color, Color, Color, Color, Color, Color, Color, Color, Color, Color, Color, Color, Color, Color, Color, Color, Color,
+                   Color, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black,
+                   black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black,
+                   black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black,
+                   black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black,
+                   black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black,
+                   black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black,
+                   black, black, black, black, black, black, black, black, black, black, black, black, black]
 
             # set delay for each update cycle
             time.sleep(0.001)
@@ -97,7 +104,7 @@ while True:
                 lp.LedCtrlXYByRGB(8, n, clist)
 
             #  print values to console
-            a = 'Percentage: ' + str(Percentage)
+            a = 'Percentage: ' + str(PercentageMax)
             b = 'Green Channel: ' + str(GChannel)
             c = 'Red Channel: ' + str(RChannel)
             print(a + '\n' + b + '\n' + c + '\n' + '-'*100)
