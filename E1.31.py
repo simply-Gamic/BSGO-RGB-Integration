@@ -16,8 +16,7 @@ else:
 
 # clear launchpad buffer
 lp.ButtonFlush()
-
-r = range(9)
+lp.Reset()
 
 # set receiver
 receiver = sacn.sACNreceiver()
