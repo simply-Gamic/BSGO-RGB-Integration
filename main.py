@@ -73,14 +73,7 @@ while True:
             Color = RGBColor(int(RChannel), int(GChannel), 0)
             RGSwap = RGBColor(int(GChannel), int(RChannel), 0)  # use if devices uses different pin layout
             clist = [int(RChannel), int(GChannel), 0]
-            lis = [Color, Color, Color, Color, Color, Color, Color, Color, Color, Color, Color, Color, Color, Color, Color, Color, Color,
-                   Color, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black,
-                   black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black,
-                   black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black,
-                   black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black,
-                   black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black,
-                   black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black,
-                   black, black, black, black, black, black, black, black, black, black, black, black, black]
+            lis = [Color] * 18 + [black] * 114
 
             # set delay for each update cycle
             time.sleep(0.001)
