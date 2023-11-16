@@ -24,77 +24,34 @@ receiver = sacn.sACNreceiver()
 # start receiving
 receiver.start()
 
+# join multicast
+receiver.join_multicast(1)
+
 # define a callback function
 @receiver.listen_on('universe', universe=1)  # listens on universe 1
 
 def callback(packet):
 
-    # split up incoming data into chunks of RGB values, 3 values for one LED
+    # split up incoming data into RGB-Lists; one list for each LED
+    L0 = [int(str(packet.dmxData[0:1]).strip('(),')), int(str(packet.dmxData[1:2]).strip('(),')), int(str(packet.dmxData[2:3]).strip('(),'))]
 
-    #LED0
-    Red0 = str(packet.dmxData[0:1]).strip('(),')
-    Green0 = str(packet.dmxData[1:2]).strip('(),')
-    Blue0 = str(packet.dmxData[2:3]).strip('(),')
+    L1 = [int(str(packet.dmxData[3:4]).strip('(),')), int(str(packet.dmxData[4:5]).strip('(),')), int(str(packet.dmxData[5:6]).strip('(),'))]
 
-    L0 = [int(Red0), int(Green0), int(Blue0)]
+    L2 = [int(str(packet.dmxData[6:7]).strip('(),')), int(str(packet.dmxData[7:8]).strip('(),')), int(str(packet.dmxData[8:9]).strip('(),'))]
 
-    # LED1
-    Red1 = str(packet.dmxData[3:4]).strip('(),')
-    Green1 = str(packet.dmxData[4:5]).strip('(),')
-    Blue1 = str(packet.dmxData[5:6]).strip('(),')
+    L3 = [int(str(packet.dmxData[9:10]).strip('(),')), int(str(packet.dmxData[10:11]).strip('(),')), int(str(packet.dmxData[11:12]).strip('(),'))]
 
-    L1 = [int(Red1), int(Green1), int(Blue1)]
+    L4 = [int(str(packet.dmxData[12:13]).strip('(),')), int(str(packet.dmxData[13:14]).strip('(),')), int(str(packet.dmxData[14:15]).strip('(),'))]
 
-    # LED2
-    Red2 = str(packet.dmxData[6:7]).strip('(),')
-    Green2 = str(packet.dmxData[7:8]).strip('(),')
-    Blue2 = str(packet.dmxData[8:9]).strip('(),')
+    L5 = [int(str(packet.dmxData[15:16]).strip('(),')), int(str(packet.dmxData[16:17]).strip('(),')), int(str(packet.dmxData[17:18]).strip('(),'))]
 
-    L2 = [int(Red2), int(Green2), int(Blue2)]
+    L6 = [int(str(packet.dmxData[18:19]).strip('(),')), int(str(packet.dmxData[19:20]).strip('(),')), int(str(packet.dmxData[20:21]).strip('(),'))]
 
-    # LED3
-    Red3 = str(packet.dmxData[9:10]).strip('(),')
-    Green3 = str(packet.dmxData[10:11]).strip('(),')
-    Blue3 = str(packet.dmxData[11:12]).strip('(),')
+    L7 = [int(str(packet.dmxData[21:22]).strip('(),')), int(str(packet.dmxData[22:23]).strip('(),')), int(str(packet.dmxData[23:24]).strip('(),'))]
 
-    L3 = [int(Red3), int(Green3), int(Blue3)]
+    L8 = [int(str(packet.dmxData[21:22]).strip('(),')), int(str(packet.dmxData[22:23]).strip('(),')), int(str(packet.dmxData[23:24]).strip('(),'))]
 
-    # LED4
-    Red4 = str(packet.dmxData[12:13]).strip('(),')
-    Green4 = str(packet.dmxData[13:14]).strip('(),')
-    Blue4 = str(packet.dmxData[14:15]).strip('(),')
-
-    L4 = [int(Red4), int(Green4), int(Blue4)]
-
-    # LED5
-    Red5 = str(packet.dmxData[15:16]).strip('(),')
-    Green5 = str(packet.dmxData[16:17]).strip('(),')
-    Blue5 = str(packet.dmxData[17:18]).strip('(),')
-
-    L5 = [int(Red5), int(Green5), int(Blue5)]
-
-    # LED6
-    Red6 = str(packet.dmxData[18:19]).strip('(),')
-    Green6 = str(packet.dmxData[19:20]).strip('(),')
-    Blue6 = str(packet.dmxData[20:21]).strip('(),')
-
-    L6 = [int(Red6), int(Green6), int(Blue6)]
-
-    # LED7
-    Red7 = str(packet.dmxData[21:22]).strip('(),')
-    Green7 = str(packet.dmxData[22:23]).strip('(),')
-    Blue7 = str(packet.dmxData[23:24]).strip('(),')
-
-    L7 = [int(Red7), int(Green7), int(Blue7)]
-
-    # LED8
-    Red8 = str(packet.dmxData[21:22]).strip('(),')
-    Green8 = str(packet.dmxData[22:23]).strip('(),')
-    Blue8 = str(packet.dmxData[23:24]).strip('(),')
-
-    L8 = [int(Red8), int(Green8), int(Blue8)]
-
-
+    # set colors
     lp.LedCtrlXYByRGB(0, 1, L0)
     lp.LedCtrlXYByRGB(1, 2, L1)
     lp.LedCtrlXYByRGB(2, 3, L2)
@@ -116,16 +73,16 @@ def callback(packet):
     lp.LedCtrlXYByRGB(8, 0, L8)
 
     # print out values for each LED
-    #print('LED0: ' + 'R:' + Red0 + ' G:' + Green0 + ' B:' + Blue0 + '\n' + '-' * 100)
-    #print('LED1: ' + 'R:' + Red1 + ' G:' + Green1 + ' B:' + Blue1 + '\n' + '-' * 100)
-    #print('LED2: ' + 'R:' + Red2 + ' G:' + Green2 + ' B:' + Blue2 + '\n' + '-' * 100)
-    #print('LED3: ' + 'R:' + Red3 + ' G:' + Green3 + ' B:' + Blue3 + '\n' + '-' * 100)
-    #print('LED4: ' + 'R:' + Red4 + ' G:' + Green4 + ' B:' + Blue4 + '\n' + '-' * 100)
-    #print('LED5: ' + 'R:' + Red5 + ' G:' + Green5 + ' B:' + Blue5 + '\n' + '-' * 100 + '\n' + '-' * 100)
     #print('RawData: ' + str(packet.dmxData) + '\n' + '-' * 100)
+    #print('LED0: ' + str(L0))
+    #print('LED1: ' + str(L1))
+    #print('LED2: ' + str(L2))
+    #print('LED3: ' + str(L3))
+    #print('LED4: ' + str(L4))
+    #print('LED5: ' + str(L5))
+    #print('LED6: ' + str(L6))
+    #print('LED7: ' + str(L7))
+    #print('LED8: ' + str(L8) + '\n' + '-' * 100 + '\n' + '-' * 100)
 
-# optional: if multicast is desired, join with the universe number as parameter
-receiver.join_multicast(1)
-
-#time.sleep(100)  # receive for 10 seconds
-
+# receive for only x seconds
+#time.sleep(x)
