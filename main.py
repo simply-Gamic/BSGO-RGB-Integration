@@ -97,7 +97,7 @@ while True:
                 lp.LedCtrlXYByRGB(8, n, clist)
 
             #  print values to console
-            a = 'Percentage: ' + str(PercentageMax)
+            a = 'Percentage: ' + str(PercentageCurrent)[:4] + '%'
             b = 'Green Channel: ' + str(GChannel)
             c = 'Red Channel: ' + str(RChannel)
             print(a + '\n' + b + '\n' + c + '\n' + '-'*100)
